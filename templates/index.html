@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Project</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 500px;
+            text-align: center;
+        }
+        h1 { color: #2c3e50; margin-bottom: 20px; }
+        textarea {
+            width: 90%;
+            height: 120px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: none;
+            outline: none;
+        }
+        textarea:focus { border-color: #3498db; }
+        button {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover { background-color: #2980b9; }
+        
+        /* تنسيق النتائج */
+        .result-box {
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 20px;
+            display: none; /* مخفي افتراضياً */
+        }
+        /* سنستخدم بايثون لإظهار هذه الأقسام */
+        .visible { display: block; }
+        .positive { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .negative { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .neutral { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔍 Sentiment Analysis</h1>
+        <p>Enter your text below to analyze emotions:</p>
+        
+        <form method="POST">
+            <textarea name="user_text" placeholder="Type a sentence (e.g., I love this project)..." required></textarea>
+            <br>
+            <button type="submit">Analyze Text</button>
+        </form>
+
+        {% if result %}
+            <div class="result-box visible {{ result_class }}">
+                Result: {{ result }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
